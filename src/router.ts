@@ -24,4 +24,4 @@ dbRequestRouter.post('/db-operation', async (req, res) => {
     }
 })
 
-export default dbRequestRouter
+export { dbRequestRouter }

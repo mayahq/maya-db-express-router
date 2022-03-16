@@ -1,5 +1,5 @@
 import express from 'express'
-import dbRequestRouter from './router'
+import { dbRequestRouter } from './router'
 import mongoose from 'mongoose'
 
 const app = express()
