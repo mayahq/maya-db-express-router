@@ -105,6 +105,25 @@ async function ensureHierarchy(request: DbRequest) {
     }
 }
 
+async function lockAndGet(request: DbRequest) {
+    const block = db.block(request.path)
+    const result = await block.lockAndGet(request.data.query)
+    return { result }
+}
+
+async function lockAndSet(request: DbRequest) {
+    const block = db.block(request.path)
+    const { query, opts } = request.data
+    const result = await block.lockAndSet(query, opts)
+    return { result }
+}
+
+async function lockAndUpdate(request: DbRequest) {
+    const block = db.block(request.path)
+    const result = await block.lockAndUpdate(request.data.query)
+    return { result }
+}
+
 async function ioClient(request: DbRequest) {
     switch (request.operation) {
         case 'readFromBlock': return await readFromBlock(request)
@@ -120,6 +139,9 @@ async function ioClient(request: DbRequest) {
         case 'acquireLockOnBlock': return await acquireLockOnBlock(request)
         case 'releaseLock': return await releaseLockOnBlock(request)
         case 'ensureHierarchy': return await ensureHierarchy(request)
+        case 'lockAndGet': return await lockAndGet(request)
+        case 'lockAndSet': return await lockAndSet(request)
+        case 'lockAndUpdate': return await lockAndUpdate(request)
         default: throw new Error(`Invalid operation: ${request.operation}`)
     }
 }
