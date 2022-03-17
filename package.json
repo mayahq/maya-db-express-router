@@ -1,5 +1,5 @@
 {
-  "name": "maya-db-express-router",
+  "name": "@mayahq/maya-db-express-router",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
