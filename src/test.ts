@@ -11,9 +11,12 @@ const loggerMiddleware = (req: any, res: any, next: Function) => {
 }
 
 const port = 9000
-mongoose.connect(
-    'mongodb://localhost:27017/mayatest'
-)
+mongoose.connect('mongodb://localhost:27017/mayatest', {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+})
 
 app.use(express.json())
 app.use(loggerMiddleware)

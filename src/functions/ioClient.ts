@@ -75,6 +75,7 @@ async function acquireLockOnBlock(request: DbRequest) {
             }
 
             return resolve({
+                lockDocument: lockDocument,
                 lockId: lockId
             })
         })
